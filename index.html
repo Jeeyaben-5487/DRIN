@@ -106,9 +106,10 @@
 
 
       var imageData = context.getImageData(0, 0, 600, 500);
+      var data = imageData.data;
      /* Retriving image data from canvas */
 
-	for(let i=0; i<imgData.data.length; i+=4)	{
+	for (var i=0; i<imgData.data.length; i+=4)	{
 		imgData.data[i+0] = 0;
 		imgData.data[i+1] = 0;
 		imgData.data[i+2] = imgData.data[i+2];
@@ -165,15 +166,13 @@
       </script>
 
      
-     	<canvas id="canvas2" width="600" height="500" style="border:1px solid #d3d3d3;"></canvas> 
+      <canvas id="canvas2" width="600" height="500" style="border:1px solid #d3d3d3;"></canvas> 
       <script> //This will add the text to the second canvas  
         var canvas2 = document.getElementById('canvas2');
         var context2 = canvas2.getContext("2d");
 	context2.font = '20pt Calibri';
 	context2.fillStyle = "black";
 	context2.fillText("The blue image will be here", 10, 20);
-	 	var imageData = context.getImageData(0, 0, 600, 500);
-	 	ctx2.putImageData(imageData, 0, 0);
       </script>
      
 

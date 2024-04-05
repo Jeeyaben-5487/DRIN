@@ -99,6 +99,10 @@
 
           /*  +++++++++++++++ BEGIN IMAGE PROCESSING +++++++++++++++ */
           /*  ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+      var canvas2 = document.getElementById('canvas2'); //This variable will connect the functions to the second canvas
+      var ctx = canvas.getContext('2d'); //
+
+         
 
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
           
@@ -142,6 +146,14 @@
         context.fillStyle = "black";
         context.fillText("Original image will go here", 10, 20);
       </script>
+
+     
+     	<canvas id="canvas2" width="600" height="500" style="border:1px solid #d3d3d3;"></canvas> 
+      <script> //This will add the second canvas next to the first one 
+       var canvas2 = document.getElementById('canvas2');
+       var context = canvas.getContext("2d");
+      </script>
+     
 
     </div><!-- /content -->
     <div data-role="footer" data-position="fixed">

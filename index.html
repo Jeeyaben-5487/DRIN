@@ -24,10 +24,11 @@
   http://stackoverflow.com/questions/11929099/html5-canvas-drawimage-ratio-bug-ios
   
   Brief Description of Goal of Code:
-  The purpose of this code is to upload or take a picture and make it only have a blue hue. 
+  The purpose of this code is to upload or take a picture and have it displayed on one canvas. At the same the image will be displayed on the second canvas with only the blue intensities.  
  
   Known Issues:
-  blah, blah, blah, blah
+  None known at the moment. 
+
 -->
 
  <head>
@@ -98,33 +99,27 @@
           drawImageIOSFix(context,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
 
           /*  +++++++++++++++ BEGIN IMAGE PROCESSING +++++++++++++++ */
-          /*  ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
       var canvas2 = document.getElementById('canvas2'); 
       var ctx2 = canvas2.getContext('2d'); 
-	/*This variable will connect the functions to the second canvas*/
+	/*These variable will connect the functions to the second canvas and allow the picture to display*/
 
 
       const imageData = context.getImageData(0, 0, 600, 500);
       const data = imageData.data;
-     /* Retriving image data from canvas */
+     /* These varibles will retrive image data from the canvas */
 
 	for (let i = 0; i < data.length; i += 4)	{
-		data[i] = 0 - data[i]; // red
-		data[i + 1] = 0 - data[i + 1]; //green
-		data[i + 2] = 255 - data[i +2]; //blue
+		data[i] = 0 - data[i]; // This will remove the red pixels from the image 
+		data[i + 1] = 0 - data[i + 1]; // This will remove the green pixles from the image 
+		data[i + 2] = 255 - data[i +2]; // This will keep the blue pixels
 	} 
 
+	/*I was able to alter the pixel intensities using the code from the following website: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas#painting_pixel_data_into_a_context */
 
-	ctx2.putImageData(imageData, 0, 0);
-	
 
-         
-
-          /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
-          
-          
-          
+	ctx2.putImageData(imageData, 0, 0); 
+	/* This will allow the blue image to display on canvas */
           
         } // end of img.onload
         
@@ -166,14 +161,16 @@
 
      
       <canvas id="canvas2" width="600" height="500" style="border:1px solid #d3d3d3;"></canvas> 
-      <script> //This will add the text to the second canvas  
+      <script> //The script adds and formats the text on the second canvas   
         var canvas2 = document.getElementById('canvas2');
         var context2 = canvas2.getContext("2d");
 	context2.font = '20pt Calibri';
 	context2.fillStyle = "black";
 	context2.fillText("The blue image will be here", 10, 20);
+	//There is a "2" behind every context and code to allow for the second canvas to have the right content
       </script>
-     
+
+<!--The HTML code for the first and second canvas is the same but the id of the two are different -> allows for differentiation -->
 
     </div><!-- /content -->
     <div data-role="footer" data-position="fixed">

@@ -99,8 +99,15 @@
 
           /*  +++++++++++++++ BEGIN IMAGE PROCESSING +++++++++++++++ */
           /*  ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-      var canvas2 = document.getElementById('canvas2'); //This variable will connect the functions to the second canvas
+      var canvas2 = document.getElementById('canvas2'); 
       var ctx2 = canvas.getContext('2d'); 
+	/*This variable will connect the functions to the second canvas*/
+
+
+	function copy () {
+		const imgData = ctx.getImageData(10, 10, 50, 50);
+		ctx2.putImageData(imgData, 10, 70);
+	}
 
          
 

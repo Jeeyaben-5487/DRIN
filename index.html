@@ -110,10 +110,9 @@
      /* These varibles will retrive image data from the canvas */
 
 	for (let i = 0; i < data.length; i += 4)	{
-		data[i] = 0 - data[i]; // This will remove the red pixels from the image 
-		data[i + 1] = 0 - data[i + 1]; // This will remove the green pixles from the image 
-		data[i + 2] = 0 - data[i +2]; // This will remove the blue pixles from the image 
-		//Image willl be grayscaled 
+		data[i] = 225 - data[i]; // Red pixels of the image 
+		data[i + 1] = 225 - data[i + 1]; // Green pixles of the image 
+		data[i + 2] = 225 - data[i +2]; // Blue pixles of the image  
 	} 
 
 	/*I was able to alter the pixel intensities using the code from the following website: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas#painting_pixel_data_into_a_context */

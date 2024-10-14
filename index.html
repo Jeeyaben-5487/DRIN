@@ -24,7 +24,7 @@
   http://stackoverflow.com/questions/11929099/html5-canvas-drawimage-ratio-bug-ios
   
   Brief Description of Goal of Code:
-  The purpose of this code is to upload or take a picture and have it displayed on one canvas. At the same the image will be displayed on the second canvas with only the blue intensities.  
+  The purpose of this code is to upload or take a picture and have it displayed on one canvas. At the same the image will be displayed on the second canvas with adjusments. 
  
   Known Issues:
   None known at the moment. 
@@ -112,7 +112,8 @@
 	for (let i = 0; i < data.length; i += 4)	{
 		data[i] = 0 - data[i]; // This will remove the red pixels from the image 
 		data[i + 1] = 0 - data[i + 1]; // This will remove the green pixles from the image 
-		data[i + 2] = 255 - data[i +2]; // This will keep the blue pixels
+		data[i + 2] = 0 - data[i +2]; // This will remove the blue pixles from the image 
+		//Image willl be grayscaled 
 	} 
 
 	/*I was able to alter the pixel intensities using the code from the following website: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas#painting_pixel_data_into_a_context */
@@ -141,7 +142,7 @@
  <body>
   <div data-role="page">
     <div data-role="header">
-    <h1>Primary Colors</h1></div><!-- /header -->
+    <h1>Diabetic Retionapathy Image Processing</h1></div><!-- /header -->
     <div data-role="content">	
       <h2>Push button to take picture.</h2>
       <div>
@@ -166,7 +167,7 @@
         var context2 = canvas2.getContext("2d");
 	context2.font = '20pt Calibri';
 	context2.fillStyle = "black";
-	context2.fillText("The blue image will be here", 10, 20);
+	context2.fillText("The processed image will be here", 10, 20);
 	//There is a "2" behind every context and code to allow for the second canvas to have the right content
       </script>
 

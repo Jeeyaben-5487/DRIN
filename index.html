@@ -118,7 +118,6 @@
 
 	/*I was able to alter the pixel intensities using the code from the following website: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas#painting_pixel_data_into_a_context */
 
-	filter: contrast(140%)
 
 	ctx2.putImageData(imageData, 0, 0); 
 	/* This will allow the blue image to display on canvas */
@@ -169,6 +168,7 @@
 	context2.font = '20pt Calibri';
 	context2.fillStyle = "black";
 	context2.fillText("The processed image will be here", 10, 20);
+	context2.filter-contrast = '1.40';
 	//There is a "2" behind every context and code to allow for the second canvas to have the right content
       </script>
 

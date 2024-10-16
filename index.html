@@ -116,7 +116,7 @@
 		let avg = (data[i] + data [i + 1] + data[i + 2]) / 3;
 
 		//Adding contrast adjustment formula to pixels 
-		avg = ((avg - 128) * contratFactor) + 128;
+		avg = ((avg - 128) * contrastFactor) + 128;
 
 		data[i]	    = avg; // Red pixels of the image 
 		data[i + 1] = avg; // Green pixles of the image 

@@ -107,13 +107,16 @@
 
       const imageData = context.getImageData(0, 0, 600, 500);
       const data = imageData.data;
+
+      const contrastFactor = 1.4; //Value adjusts the contrast of the image 
+
      /* These varibles will retrive image data from the canvas */
 
 	for (let i = 0; i < data.length; i += 4)	{
-		let avg = (data[i] + data[i + 1] + data[i + 2]) /3;
-		data[i]	    = avg; // Red pixels of the image 
-		data[i + 1] = avg; // Green pixles of the image 
-		data[i + 2] = avg; // Blue pixles of the image
+		//Adding contrast adjustment formula to pixels 
+		data[i]	    = ((data[i] - 128) * contrastFactor) + 128; // Red pixels of the image 
+		data[i + 1] = ((data[i + 1] - 128) * contrastFactor) + 128; // Green pixles of the image 
+		data[i + 2] = ((data[i + 2] - 128) * contrastFactor) + 128; // Blue pixles of the image
 	} 
 
 	/*I was able to alter the pixel intensities using the code from the following website: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas#painting_pixel_data_into_a_context */
@@ -168,7 +171,6 @@
 	context2.font = '20pt Calibri';
 	context2.fillStyle = "black";
 	context2.fillText("The processed image will be here", 10, 20);
-	contrast2 = '1.40';
 	//There is a "2" behind every context and code to allow for the second canvas to have the right content
       </script>
 

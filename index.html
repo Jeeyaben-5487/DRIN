@@ -112,11 +112,15 @@
 
      /* These varibles will retrive image data from the canvas */
 
-	for (let i = 0; i < data.length; i += 4)	{
+	for (let i = 0; i < data.length; i += 4)	{ 
+		let avg = (data[i] + data [i + 1] + data[i + 2]) / 3;
+
 		//Adding contrast adjustment formula to pixels 
-		data[i]	    = ((data[i] - 128) * contrastFactor) - 128; // Red pixels of the image 
-		data[i + 1] = ((data[i + 1] -128) * contrastFactor) - 128; // Green pixles of the image 
-		data[i + 2] = ((data[i + 2] - 128) * contrastFactor) - 128; // Blue pixles of the image
+		avg = ((avg - 128) * contratFactor) + 128;
+
+		data[i]	    = avg; // Red pixels of the image 
+		data[i + 1] = avg; // Green pixles of the image 
+		data[i + 2] = avg; // Blue pixles of the image
 	} 
 
 	/*I was able to alter the pixel intensities using the code from the following website: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas#painting_pixel_data_into_a_context */

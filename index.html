@@ -113,7 +113,7 @@
 		let avg = (data[i] + data[i + 1] + data[i + 2]) /3;
 		data[i]	    = avg; // Red pixels of the image 
 		data[i + 1] = avg; // Green pixles of the image 
-		data[i + 2] = avg; // Blue pixles of the image  
+		data[i + 2] = avg; // Blue pixles of the image
 	} 
 
 	/*I was able to alter the pixel intensities using the code from the following website: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas#painting_pixel_data_into_a_context */
@@ -162,6 +162,7 @@
 
      
       <canvas id="canvas2" width="600" height="500" style="border:1px solid #d3d3d3;"></canvas> 
+		<contrast()> = contrast( [.40 |40%] ) ></contrast>
       <script> //The script adds and formats the text on the second canvas   
         var canvas2 = document.getElementById('canvas2');
         var context2 = canvas2.getContext("2d");

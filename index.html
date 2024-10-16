@@ -162,13 +162,13 @@
 
      
       <canvas id="canvas2" width="600" height="500" style="border:1px solid #d3d3d3;"></canvas> 
-		<contrast([.40 |40%])></contrast>
       <script> //The script adds and formats the text on the second canvas   
         var canvas2 = document.getElementById('canvas2');
         var context2 = canvas2.getContext("2d");
 	context2.font = '20pt Calibri';
 	context2.fillStyle = "black";
 	context2.fillText("The processed image will be here", 10, 20);
+	contrast2 = '1.40';
 	//There is a "2" behind every context and code to allow for the second canvas to have the right content
       </script>
 

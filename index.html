@@ -121,15 +121,17 @@
 		data[i]	    = avg; // Red pixels of the image 
 		data[i + 1] = avg; // Green pixles of the image 
 		data[i + 2] = avg; // Blue pixles of the image
+
+
+	<filter id="blur"> 
+		<feGaussianBlur stdDeviation="[1.00]" edgeMode="[none]"
+	</filter>
+
 	} 
 
 	/*I was able to alter the pixel intensities using the code from the following website: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas#painting_pixel_data_into_a_context */
 
 	
-	<filter id="blur"> 
-		<feGaussianBlur stdDeviation="[1.00]" edgeMode="[none]"
-	</filter>
-
 	ctx2.putImageData(imageData, 0, 0); 
 	/* This will allow the processed image to display on canvas */
           

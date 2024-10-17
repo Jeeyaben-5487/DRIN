@@ -125,9 +125,13 @@
 
 	/*I was able to alter the pixel intensities using the code from the following website: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas#painting_pixel_data_into_a_context */
 
+	
+	<filter id="blur"> 
+		<feGaussianBlur stdDeviation="[1.00]" edgeMode="[none]"
+	</filter>
 
 	ctx2.putImageData(imageData, 0, 0); 
-	/* This will allow the blue image to display on canvas */
+	/* This will allow the processed image to display on canvas */
           
         } // end of img.onload
         
@@ -159,7 +163,7 @@
       <div id="messageDisplayArea"></div>
       
       <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
-      <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas" */
+      <script> /* This script initiates the canvas and puts the text on the canvas "myCanvas" */
         var canvas = document.getElementById('myCanvas');
         var context = canvas.getContext("2d");
         context.font = '20pt Calibri';

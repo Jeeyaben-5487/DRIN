@@ -130,7 +130,30 @@
 	
 	ctx2.putImageData(imageData, 0, 0); 
 	/* This will allow the processed image to display on canvas */
+
+	const floar pi = atan(1.0) * 4.0;
+	const int samples = 25;
 	
+	float gaussian(vec2 i, float sigma) {
+		return 1.0 / (2.0 * pi * pow2(sigma)) * exp(-((pow2(i.x) + pow2(i.y)) / (2.0 * pow2(sigma))));
+	}
+
+	vec3 blur(sampler2D sp, vec2 uv, vec2 scale) {
+  	  vec3 col = vec3(0.0);
+  	  float accum = 0.0;
+   	  float weight;
+  	  vec2 offset;
+  	  float sigma = float(samples) * ((iMouse.x/iResolution.x) * 0.28);
+
+	for (int y = -samples / 2; y < samples / 2; ++y) {
+            offset = vec2(x, y);
+            weight = gaussian(offset, sigma);
+            col += texture(sp, uv + scale * offset).rgb * weight;
+            accum += weight;
+        }
+    }
+    
+    return col / accum;
 	
         } // end of img.onload
         

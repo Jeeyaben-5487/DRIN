@@ -112,8 +112,10 @@
 
      /* These varibles will retrive image data from the canvas */
 
-	for (let i = 0; i < data.length; i += 4)	{ 
+
+	  for (let i = 0; i < data.length; i += 4)	{ 
 		let avg = (data[i] + data [i + 1] + data[i + 2]) / 3;
+		//Grayscale adjustments 
 
 		//Adding contrast adjustment formula to pixels 
 		avg = ((avg - 128) * contrastFactor) + 128;
@@ -127,6 +129,8 @@
 
 	/*I was able to alter the pixel intensities using the code from the following website: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas#painting_pixel_data_into_a_context */
 
+        applyGaussianBlur(imageData, 600, 500);
+	/* Implementing gaussian blur for image */
 	
 	ctx2.putImageData(imageData, 0, 0); 
 	/* This will allow the processed image to display on canvas */
@@ -146,6 +150,50 @@
     } // end of the else statement if file in NOT an image
   }); // end of the fileInput.addEventListener function
  } // end of the window.onload function
+
+
+  function applyGaussianBlur(imageData, width, height) {
+	const weights = [
+	    [1, 4, 7, 4, 1],
+	    [4, 16, 26, 16, 4],
+            [7, 26, 41, 26, 7],
+	    [4, 16, 26, 16, 4], 
+	    [1, 4, 7, 4, 1]
+	];
+
+	/* Matrix is a Guassian kernal that is used to weight pixels */
+
+	const kernalSize = 5; // Defining a 5x5 grid for loops 
+	const weightSum = 273; // Sum of all elements in Gaussian kernal
+
+	const pixels = imageData.data;
+	const copy = new Uint8ClampedArray(pixels); // Copy of original pixel data
+
+	// Applying Gaussian kernal 
+	for (let y = 2; y < height - 2; y++) {
+	    for (let x = 2; x < width - 2; x++) {
+		let red = 0, green = 0, blue = 0;
+
+	for (let ky = 0; ky < kernalSize; ky++) {
+	    for (let kx = 0; kx < kernalSize; kx++) {
+		const pixelX = x + kx - 2;
+		const pixelY = y + ky - 2;
+		const pixelIndex = (pixelY * width + pixelX) * 4;
+	/* Calculating x and y coordinate of neighboring pixels 
+
+		red += copy[pixelIndex] * weigths[ky][kx];
+		green += copy[pixelIndex + 1] * weights[ky][kx];
+		blue += copy[pixelIndex + 2] * weight[ky][kx];
+	    }
+	}
+
+	const index = (y * width + x) * 4;
+	pixel[index] = red / weightSum;
+	pixels[index + 1] = green / weightSum;
+	pixels[index + 2] = blue / weightSum;
+      }
+   }
+}
 
 	
  </script>

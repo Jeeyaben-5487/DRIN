@@ -179,7 +179,8 @@
 		const pixelX = x + kx - 2;
 		const pixelY = y + ky - 2;
 		const pixelIndex = (pixelY * width + pixelX) * 4;
-	/* Calculating x and y coordinate of neighboring pixels 
+
+	/* Calculating x and y coordinate of neighboring pixels */ 
 
 		red += copy[pixelIndex] * weigths[ky][kx];
 		green += copy[pixelIndex + 1] * weights[ky][kx];

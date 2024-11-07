@@ -82,13 +82,13 @@
   var messageDisplayArea = document.getElementById('messageDisplayArea');
   /* fileInput.addEventListener looks for any change in the <input> tag indicating that the user has selected a file (picture). */
   fileInput.addEventListener('change', function(e) {
-    var file = fileInput.files[0];
+    const file = fileInput.files[0];
     var imageType = /image.*/;
     /* if (file.type.match(imageType)) checks that the selected file is indeed an image. */
     if (file.type.match(imageType)) {
       /* new FileReader(); and reader.onload start some kind of file reading process in javaScript. I do not understand why this is necessary although it may simply slow things down to let the image load. */
-      var reader = new FileReader();
-      reader.onload = function(e) {
+      const reader = new FileReader();
+      reader.onload = function() {
         /* messageDisplayArea.innerHTML not needed but allows you to send a message at this point in the program. */
         messageDisplayArea.innerHTML = "You picked an image!";
         /* new Image() and img.onload start some kind of new image creation process in javaScript. I do not understand why this is necessary although it may simply slow things down to let the image load. */
@@ -96,7 +96,7 @@
         img.onload = function() {
           /*This finally draws the image onto the first drawing canvas. The specific canvas is referred to by "context". This is established down in the HTML part of the file just under the first <canvas> tag. If we weren't worried about fixing an iPhone bug we would use context.drawImage(image, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500) instead of drawImageIOSFix */
         
-          drawImageIOSFix(context,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
+          drawImageIOSFix(context, img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
 
           /*  +++++++++++++++ BEGIN IMAGE PROCESSING +++++++++++++++ */
 
@@ -108,8 +108,6 @@
       const imageData = context.getImageData(0, 0, 600, 500);
       const data = imageData.data;
 
-      const contrastFactor = 1.4; //Value adjusts the contrast of the image 
-
      /* These varibles will retrive image data from the canvas */
 
 
@@ -118,18 +116,16 @@
 		//Grayscale adjustments 
 
 		//Adding contrast adjustment formula to pixels 
-		avg = ((avg - 128) * contrastFactor) + 128;
+		avg = ((avg - 128) * 1.4) + 128;
 
-		data[i]	    = avg; // Red pixels of the image 
-		data[i + 1] = avg; // Green pixles of the image 
-		data[i + 2] = avg; // Blue pixles of the image
+		data[i]	= data[i + 1] = avg = data[i + 2] = avg; //Pixels adjustment 
 
 	} 
 
 	/*I was able to alter the pixel intensities using the code from the following website: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas#painting_pixel_data_into_a_context */
 
 
-	applyGaussianBlur(imageData, 600, 500);
+	applyGaussianBlur(imageData, img.width, img.height);
 	/* Adding blur */
 	
 	ctx2.putImageData(imageData, 0, 0); 

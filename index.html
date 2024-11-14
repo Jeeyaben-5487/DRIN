@@ -125,7 +125,7 @@
 	/*I was able to alter the pixel intensities using the code from the following website: https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Pixel_manipulation_with_canvas#painting_pixel_data_into_a_context */
 
 
-	applyGaussianBlur(imageData, img.width, img.height);
+	applyGaussianBlur(imageData, 600, 500);
 	/* Adding blur */
 	
 	ctx2.putImageData(imageData, 0, 0); 
@@ -163,7 +163,7 @@
 	const weightSum = 273; // Sum of all elements in Gaussian kernel 
 
 	const pixels = imageData.data
-	const copy = new Uint8ClampedArray(pixels); // Making a copy of the original pixel data 
+	const copy = new UintClampedArray(pixels); // Making a copy of the original pixel data 
 
 	
 	// Apply the kernel 
@@ -182,11 +182,17 @@
 			blue += copy[pixelIndex + 2] * weights[ky][kx];
 		}
             }
+
+	   //Log values of red, green, and blue before updating
+	   console.log('Before update: x=${x}, y=${y}, red=${red}, green=${green}, blue=${blue}');
 		
            const index = (y * width + x) * 4;
 	   pixels[index] = red / weightSum;
 	   pixels[index + 1] = green / weightSum;
 	   pixels[index + 2] = blue / weightSum;
+
+	   // Log updated values after the blur is applied
+           console.log('After update: x=${x}, y=${y}, red=${pixels[index]}, green=${pixels[index + 1]}, blue=${pixels[index + 2]}');
 	}
     }
 }

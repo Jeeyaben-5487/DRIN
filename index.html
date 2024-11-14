@@ -182,17 +182,12 @@
 			blue += copy[pixelIndex + 2] * weights[ky][kx];
 		}
             }
-
-	   //Log values of red, green, and blue before updating
-	   console.log('Before update: x=${x}, y=${y}, red=${red}, green=${green}, blue=${blue}');
 		
            const index = (y * width + x) * 4;
 	   pixels[index] = red / weightSum;
 	   pixels[index + 1] = green / weightSum;
 	   pixels[index + 2] = blue / weightSum;
 
-	   // Log updated values after the blur is applied
-           console.log('After update: x=${x}, y=${y}, red=${pixels[index]}, green=${pixels[index + 1]}, blue=${pixels[index + 2]}');
 	}
     }
 }

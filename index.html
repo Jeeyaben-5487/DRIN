@@ -100,7 +100,7 @@
 
           /*  +++++++++++++++ BEGIN IMAGE PROCESSING +++++++++++++++ */
 
-      var canvas2 = document.getElementById('canvas2'); 
+      var ctx2 = document.getElementById('canvas2'); 
       var ctx2 = canvas2.getContext('2d'); 
 	/*These variable will connect the functions to the second canvas and allow the picture to display*/
 
@@ -210,7 +210,7 @@
       
       <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
       <script> /* This script initiates the canvas and puts the text on the canvas "myCanvas" */
-        var canvas = document.getElementById('myCanvas');
+        var context = document.getElementById('myCanvas');
         var context = canvas.getContext("2d");
         context.font = '20pt Calibri';
         context.fillStyle = "black";
@@ -220,7 +220,7 @@
      
       <canvas id="canvas2" width="600" height="500" style="border:1px solid #d3d3d3;"></canvas> 
       <script> //The script adds and formats the text on the second canvas   
-        var canvas2 = document.getElementById('canvas2');
+        var context2 = document.getElementById('canvas2');
         var context2 = canvas2.getContext("2d");
 	context2.font = '20pt Calibri';
 	context2.fillStyle = "black";

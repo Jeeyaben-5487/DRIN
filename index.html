@@ -163,7 +163,7 @@
 	const weightSum = 273; // Sum of all elements in Gaussian kernel 
 
 	const pixels = imageData.data;
-	const copy = new UintClampedArray(pixels); // Making a copy of the original pixel data 
+	const copy = new Uint8ClampedArray(pixels); // Making a copy of the original pixel data 
 
 	
 	// Apply the kernel 
@@ -187,6 +187,12 @@
 	   pixels[index] = red / weightSum;
 	   pixels[index + 1] = green / weightSum;
 	   pixels[index + 2] = blue / weightSum;
+
+	//Checking if the image data was retrived 
+	console.log("ImageData:", imageData);
+
+	//Logging a pixel value before and after modtification 
+	console.log("Original pixel:", data[0], data[1], data[2], data[3]);
 
 	}
     }
